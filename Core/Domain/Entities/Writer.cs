@@ -5,6 +5,6 @@
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
 
-        public ICollection<OriginalStory> OriginalStories { get; set; } = new List<OriginalStory>();
+        public IEnumerable<OriginalStory> OriginalStories { get; set; } = new List<OriginalStory>();
     }
 }

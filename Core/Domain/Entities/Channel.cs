@@ -7,6 +7,6 @@
 
         public int UserId { get; set; }
         public User User { get; set; } = null!;
-        public ICollection<Track> UploadedTracks { get; set; } = new List<Track>();
+        public IEnumerable<Track> UploadedTracks { get; set; } = new List<Track>();
     }
 }

@@ -8,6 +8,6 @@
 
         public int WriterId { get; set; }
         public Writer Writer { get; set; } = null!;
-        public ICollection<Track> Tracks { get; set; } = new List<Track>();
+        public IEnumerable<Track> Tracks { get; set; } = new List<Track>();
     }
 }

@@ -14,6 +14,6 @@ namespace AudioWeb.Core.Domain.Entities
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public Channel Channel { get; set; } = null!;
-        public ICollection<PlaylistItem> PlaylistItems { get; set; } = new List<PlaylistItem>();
+        public IEnumerable<PlaylistItem> PlaylistItems { get; set; } = new List<PlaylistItem>();
     }
 }

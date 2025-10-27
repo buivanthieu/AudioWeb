@@ -17,7 +17,7 @@ namespace AudioWeb.Core.Domain.Entities
         public Category Category { get; set; } = null!;
         public int OriginalStoryId { get; set; }
         public OriginalStory OriginalStory { get; set; } = null!;
-        public ICollection<TrackTag> TrackTags { get; set; } = new List<TrackTag>();
-        public ICollection<PlaylistItem> PlaylistItems { get; set; } = new List<PlaylistItem>();
+        public IEnumerable<TrackTag> TrackTags { get; set; } = new List<TrackTag>();
+        public IEnumerable<PlaylistItem> PlaylistItems { get; set; } = new List<PlaylistItem>();
     }
 }

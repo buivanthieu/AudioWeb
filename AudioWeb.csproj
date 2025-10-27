@@ -20,30 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\Application\Commands\Tracks\" />
-    <Folder Include="Core\Application\Commands\Writers\" />
     <Folder Include="Core\Application\Commands\Users\" />
-    <Folder Include="Core\Application\Commands\Tags\" />
-    <Folder Include="Core\Application\Commands\Playlists\" />
-    <Folder Include="Core\Application\Commands\OriginalStories\" />
-    <Folder Include="Core\Application\DTOs\OriginalStories\" />
-    <Folder Include="Core\Application\DTOs\Playlists\" />
-    <Folder Include="Core\Application\DTOs\Tags\" />
-    <Folder Include="Core\Application\DTOs\Tracks\" />
     <Folder Include="Core\Application\DTOs\Users\" />
-    <Folder Include="Core\Application\DTOs\Writers\" />
-    <Folder Include="Core\Application\Handlers\OriginalStories\" />
-    <Folder Include="Core\Application\Handlers\Playlists\" />
-    <Folder Include="Core\Application\Handlers\Tags\" />
-    <Folder Include="Core\Application\Handlers\Tracks\" />
     <Folder Include="Core\Application\Handlers\Users\" />
-    <Folder Include="Core\Application\Handlers\Writers\" />
-    <Folder Include="Core\Application\Queries\OriginalStories\" />
-    <Folder Include="Core\Application\Queries\Playlists\" />
-    <Folder Include="Core\Application\Queries\Tags\" />
-    <Folder Include="Core\Application\Queries\Tracks\" />
     <Folder Include="Core\Application\Queries\Users\" />
-    <Folder Include="Core\Application\Queries\Writers\" />
     <Folder Include="Core\Application\Validators\" />
     <Folder Include="Core\Domain\Events\" />
     <Folder Include="Presention\Extensions\" />

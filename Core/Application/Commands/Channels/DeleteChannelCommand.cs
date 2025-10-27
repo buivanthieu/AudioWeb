@@ -3,7 +3,7 @@
 
 namespace AudioWeb.Core.Application.Commands.Channels
 {
-    public class DeleteChannelCommand : IRequest<bool>
+    public record DeleteChannelCommand (int ChannelId) : IRequest<bool>
     {
     }
 }

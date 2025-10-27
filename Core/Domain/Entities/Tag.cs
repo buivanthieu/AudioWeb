@@ -5,7 +5,7 @@
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
 
-        public ICollection<TrackTag> TrackTags { get; set; } = new List<TrackTag>();
+        public IEnumerable<TrackTag> TrackTags { get; set; } = new List<TrackTag>();
 
 }
 }

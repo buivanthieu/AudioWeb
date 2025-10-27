@@ -4,7 +4,7 @@ using MediatR;
 
 namespace AudioWeb.Core.Application.Commands.Channels
 {
-    public class CreateChannelCommand : IRequest<ChannelDto>
+    public record CreateChannelCommand(CreateChannelDto CreateChannelDto) : IRequest<ChannelDto>
     {
     }
 }

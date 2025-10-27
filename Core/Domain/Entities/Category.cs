@@ -5,6 +5,6 @@
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
 
-        public ICollection<Track> Tracks { get; set; } = new List<Track>();
+        public IEnumerable<Track> Tracks { get; set; } = new List<Track>();
     }
 }

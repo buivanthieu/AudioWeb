@@ -3,7 +3,7 @@ using MediatR;
 
 namespace AudioWeb.Core.Application.Queries.Channels
 {
-    public class GetChannelByIdQuery : IRequest<ChannelDto>
+    public record GetChannelByIdQuery(int ChannelId) : IRequest<ChannelDto>
     {
     }
 }

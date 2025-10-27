@@ -1,4 +1,5 @@
-﻿using AudioWeb.Core.Domain.Entities;
+﻿using AudioWeb.Core.Application.DTOs.Tracks;
+using AudioWeb.Core.Domain.Entities;
 
 namespace AudioWeb.Core.Application.DTOs.Categories
 {
@@ -7,6 +8,6 @@ namespace AudioWeb.Core.Application.DTOs.Categories
         public int Id { get; set; }
         public string? Name { get; set; }
 
-        public ICollection<TrackDto> TrackDtos { get; set; } = new List<Track>();
+        public IEnumerable<TrackDto> TrackDtos { get; set; } = new List<TrackDto>();
     }
 }

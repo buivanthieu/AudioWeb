@@ -4,7 +4,7 @@ using MediatR;
 
 namespace AudioWeb.Core.Application.Queries.Channels
 {
-    public class GetAllChannelsQuery : IRequest<IEnumerable<ChannelDto>>
+    public record GetAllChannelsQuery() : IRequest<IEnumerable<ChannelDto>>
     {
     }
 }
