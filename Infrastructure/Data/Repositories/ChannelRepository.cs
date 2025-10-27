@@ -21,13 +21,15 @@ namespace AudioWeb.Infrastructure.Data.Repositories
             return channel;
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             var channel = await _context.Channels.FindAsync(id);
             if (channel != null)
             {
                 _context.Channels.Remove(channel);
                 await _context.SaveChangesAsync();
+                return true;
+
             }
             else
             {

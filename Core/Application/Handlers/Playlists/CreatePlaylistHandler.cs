@@ -1,6 +1,28 @@
-﻿namespace AudioWeb.Core.Application.Handlers.Playlists
+﻿using AudioWeb.Core.Application.Commands.Playlists;
+using AudioWeb.Core.Application.DTOs.Playlists;
+using AudioWeb.Core.Domain.Entities;
+using AudioWeb.Core.Domain.Interfaces;
+using AutoMapper;
+using MediatR;
+
+namespace AudioWeb.Core.Application.Handlers.Playlists
 {
-    public class CreatePlaylistHandler
+    public class CreatePlaylistHandler : IRequestHandler<CreatePlaylistCommand, PlaylistDto>
     {
+        private readonly IPlaylistItemRepository _playlistRepository;
+        private readonly IMapper _mapper;
+
+        public CreatePlaylistHandler(IPlaylistItemRepository playlistRepository, IMapper mapper)
+        {
+            _playlistRepository = playlistRepository;
+            _mapper = mapper;
+        }
+
+        public async Task<PlaylistDto> Handle(CreatePlaylistCommand request, CancellationToken cancellationToken = default)
+        {
+            var playlistEntity = _mapper.Map<PlaylistItem>(request.CreatePlaylistDto);
+            var createdPlaylist = await _playlistRepository.AddAsync(playlistEntity);
+            return _mapper.Map<PlaylistDto>(createdPlaylist);
+        }
     }
 }

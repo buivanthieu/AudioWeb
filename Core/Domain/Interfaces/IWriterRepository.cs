@@ -9,7 +9,7 @@ namespace AudioWeb.Core.Domain.Interfaces
 
         Task<Writer> AddAsync(Writer writer);
         Task<Writer> UpdateAsync(Writer writer);
-        Task DeleteAsync(int id);
+        Task<bool> DeleteAsync(int id);
 
     }
 }

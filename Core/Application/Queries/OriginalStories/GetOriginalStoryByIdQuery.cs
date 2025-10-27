@@ -3,7 +3,7 @@ using MediatR;
 
 namespace AudioWeb.Core.Application.Queries.OriginalStories
 {
-    public record GetriginalStoryByIdOQuery(int OriginalStoryId) : IRequest<OriginalStoryDto>
+    public record GetOriginalStoryByIdQuery(int OriginalStoryId) : IRequest<OriginalStoryDto>
     {
     }
 }

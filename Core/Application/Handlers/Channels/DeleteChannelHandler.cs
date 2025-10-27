@@ -27,8 +27,8 @@ namespace AudioWeb.Core.Application.Handlers.Channels
             {
                 throw new Exception("Channel not found.");
             }
-            await _channelRepository.DeleteAsync(request.ChannelId);
-            return true;
+            var result = await _channelRepository.DeleteAsync(request.ChannelId);
+            return result;
         }
     }
 }

@@ -24,8 +24,8 @@ namespace AudioWeb.Core.Application.Handlers.Categories
             {
                 return false;
             }
-            await _categoryRepository.DeleteAsync(request.categoryId);
-            return true;
+            var result = await _categoryRepository.DeleteAsync(request.categoryId);
+            return result;
         }
     }
 }

@@ -5,6 +5,7 @@ using AudioWeb.Core.Application.Commands.Categories;
 using AudioWeb.Core.Application.DTOs.Categories;
 using AudioWeb.Core.Domain.Interfaces;
 using AutoMapper;
+using AudioWeb.Core.Domain.Entities;
 
 namespace AudioWeb.Core.Application.Handlers.Categories
 {
@@ -26,7 +27,7 @@ namespace AudioWeb.Core.Application.Handlers.Categories
             {
                 throw new ArgumentException($"Category with ID {request.categoryId} not found.");
             }
-            
+            _mapper.Map(request.UpdateCategoryDto, category);
             var updatedCategory = await _categoryRepository.UpdateAsync(category);
             return _mapper.Map<CategoryDto>(updatedCategory);
         }

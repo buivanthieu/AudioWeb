@@ -9,7 +9,7 @@ namespace AudioWeb.Core.Domain.Interfaces
 
         Task<Channel> AddAsync(Channel channel);
         Task<Channel> UpdateAsync(Channel channel);
-        Task DeleteAsync(int id);
+        Task<bool> DeleteAsync(int id);
 
     }
 }

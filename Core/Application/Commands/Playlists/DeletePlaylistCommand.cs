@@ -2,7 +2,7 @@
 
 namespace AudioWeb.Core.Application.Commands.Playlists
 {
-    public record DeletePlaylistCommnad(int PlaylistId) : IRequest<bool>
+    public record DeletePlaylistCommand(int PlaylistId) : IRequest<bool>
     {
     }
 }

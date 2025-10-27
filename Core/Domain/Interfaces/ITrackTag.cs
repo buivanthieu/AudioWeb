@@ -8,6 +8,6 @@ namespace AudioWeb.Core.Domain.Interfaces
         Task<IEnumerable<TrackTag>> GetAllAsync();
         Task<TrackTag> AddAsync(TrackTag trackTag);
         Task<TrackTag> UpdateAsync(TrackTag trackTag);
-        Task DeleteAsync(int id);
+        Task<bool> DeleteAsync(int id);
     }
 }

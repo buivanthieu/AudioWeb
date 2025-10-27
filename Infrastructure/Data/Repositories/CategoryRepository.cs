@@ -19,13 +19,14 @@ namespace AudioWeb.Infrastructure.Data.Repositories
             return category;
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             var category = await _context.Categories.FindAsync(id);
             if (category != null)
             {
                 _context.Categories.Remove(category);
                 await _context.SaveChangesAsync();
+                return true;
             }
             else
             {

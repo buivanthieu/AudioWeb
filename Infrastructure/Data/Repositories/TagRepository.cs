@@ -21,13 +21,14 @@ namespace AudioWeb.Infrastructure.Data.Repositories
             return tag;
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             var tag = await _context.Tags.FindAsync(id);
             if (tag != null)
             {
                 _context.Tags.Remove(tag);
                 await _context.SaveChangesAsync();
+                return true;
             }
             else
             {

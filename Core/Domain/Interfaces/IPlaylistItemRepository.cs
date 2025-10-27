@@ -10,6 +10,6 @@ namespace AudioWeb.Core.Domain.Interfaces
         Task<PlaylistItem> GetByIdAsync(int id);
         Task<PlaylistItem> AddAsync(PlaylistItem item);
         Task<PlaylistItem> UpdateAsync(PlaylistItem item);
-        Task DeleteAsync(int id);
+        Task<bool> DeleteAsync(int id);
     }
 }
