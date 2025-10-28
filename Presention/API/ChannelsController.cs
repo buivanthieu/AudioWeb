@@ -62,7 +62,7 @@ namespace AudioWeb.Presention.API
                 return this.BadRequestResponse<ChannelDto>(ex.Message);
             }
         }
-        [HttpPost("delete")]
+        [HttpDelete("delete")]
         public async Task<ActionResult<BaseResponse<bool>>> DeleteChannel([FromQuery] int id)
         {
             try

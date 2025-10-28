@@ -63,7 +63,7 @@ namespace AudioWeb.Presention.API
                 return this.BadRequestResponse<CategoryDto>(ex.Message);
             }
         }
-        [HttpPost("delete")]
+        [HttpDelete("delete")]
         public async Task<ActionResult<BaseResponse<bool>>> DeleteCategory([FromQuery] int id)
         {
             try
