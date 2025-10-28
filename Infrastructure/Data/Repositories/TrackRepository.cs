@@ -57,5 +57,15 @@ namespace AudioWeb.Infrastructure.Data.Repositories
             await _context.SaveChangesAsync();
             return track;
         }
+
+
+        public async Task<IEnumerable<Track>> GetAllTracksByChannelIdAsync(int channelId)
+        {
+            return await _context.Tracks
+                .Include(t => t.TrackTags)
+                .Include(t => t.Category)
+                .Where(t => t.ChannelId == channelId)
+                .ToListAsync();
+        }
     }
 }

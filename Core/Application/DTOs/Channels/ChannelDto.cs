@@ -1,4 +1,5 @@
-﻿using AudioWeb.Core.Application.DTOs.Tracks;
+﻿using AudioWeb.Core.Application.DTOs.Playlists;
+using AudioWeb.Core.Application.DTOs.Tracks;
 using AudioWeb.Core.Domain.Entities;
 
 namespace AudioWeb.Core.Application.DTOs.Channels
@@ -11,5 +12,6 @@ namespace AudioWeb.Core.Application.DTOs.Channels
         public int UserId { get; set; }
         //public User User { get; set; } = null!;
         public IEnumerable<TrackDto> UploadedTrackDtos { get; set; } = new List<TrackDto>();
+        public IEnumerable<PlaylistDto> PlaylistDtos { get; set; } = new List<PlaylistDto>();
     }
 }

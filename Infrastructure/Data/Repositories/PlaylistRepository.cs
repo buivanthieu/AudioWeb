@@ -41,6 +41,7 @@ namespace AudioWeb.Infrastructure.Data.Repositories
             return await _context.Playlists.ToListAsync();
         }
 
+
         public async Task<Playlist> GetByIdAsync(int id)
         {
             var playlist = await _context.Playlists.FirstOrDefaultAsync(p => p.Id == id);
@@ -57,5 +58,14 @@ namespace AudioWeb.Infrastructure.Data.Repositories
             await _context.SaveChangesAsync();
             return playlist;
         }
+
+        public async Task<IEnumerable<Playlist>> GetAllPlaylistsByChannelIdAsync(int channelId)
+        {
+            var playlists = await _context.Playlists
+                .Where(p => p.ChannelId == channelId)
+                .ToListAsync();
+            return playlists;
+        }
+
     }
 }

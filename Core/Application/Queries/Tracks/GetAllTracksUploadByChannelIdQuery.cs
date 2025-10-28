@@ -3,7 +3,7 @@ using MediatR;
 
 namespace AudioWeb.Core.Application.Queries.Tracks
 {
-    public record GetAllTracksUploadByUserIdQuery(int UserId) : IRequest<IEnumerable<TrackDto>>
+    public record GetAllTracksUploadByChannelIdQuery(int ChannelId) : IRequest<IEnumerable<TrackDto>>
     {
     }
 }

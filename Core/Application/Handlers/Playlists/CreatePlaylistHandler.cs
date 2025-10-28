@@ -9,10 +9,10 @@ namespace AudioWeb.Core.Application.Handlers.Playlists
 {
     public class CreatePlaylistHandler : IRequestHandler<CreatePlaylistCommand, PlaylistDto>
     {
-        private readonly IPlaylistItemRepository _playlistRepository;
+        private readonly IPlaylistRepository _playlistRepository;
         private readonly IMapper _mapper;
 
-        public CreatePlaylistHandler(IPlaylistItemRepository playlistRepository, IMapper mapper)
+        public CreatePlaylistHandler(IPlaylistRepository playlistRepository, IMapper mapper)
         {
             _playlistRepository = playlistRepository;
             _mapper = mapper;

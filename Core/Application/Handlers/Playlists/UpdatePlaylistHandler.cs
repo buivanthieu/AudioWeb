@@ -8,10 +8,10 @@ namespace AudioWeb.Core.Application.Handlers.Playlists
 {
     public class UpdatePlaylistHandler : IRequestHandler<UpdatePlaylistCommand, PlaylistDto>
     {
-        private readonly IPlaylistItemRepository _playlistRepository;
+        private readonly IPlaylistRepository _playlistRepository;
         private readonly IMapper _mapper;
 
-        public UpdatePlaylistHandler(IPlaylistItemRepository playlistRepository, IMapper mapper)
+        public UpdatePlaylistHandler(IPlaylistRepository playlistRepository, IMapper mapper)
         {
             _playlistRepository = playlistRepository;
             _mapper = mapper;

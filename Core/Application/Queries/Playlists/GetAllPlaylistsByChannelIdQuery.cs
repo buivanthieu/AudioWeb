@@ -3,7 +3,7 @@ using MediatR;
 
 namespace AudioWeb.Core.Application.Queries.Playlists
 {
-    public record GetAllPlaylistsByUserIdQuery(int UserId) : IRequest<IEnumerable<PlaylistDto>>
+    public record GetAllPlaylistsByChannelIdQuery(int ChannelId) : IRequest<IEnumerable<PlaylistDto>>
     {
     }
 }

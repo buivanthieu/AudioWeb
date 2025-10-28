@@ -11,5 +11,7 @@ namespace AudioWeb.Core.Domain.Interfaces
         Task<Playlist> UpdateAsync(Playlist playlist);
         Task<bool> DeleteAsync(int id);
 
+        Task<IEnumerable<Playlist>> GetAllPlaylistsByChannelIdAsync(int channelId);
+
     }
 }
