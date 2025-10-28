@@ -18,7 +18,7 @@ namespace AudioWeb.Core.Application.Handlers.Playlists
         }
         public async Task<IEnumerable<PlaylistDto>> Handle(GetAllPlaylistsByChannelIdQuery request, CancellationToken cancellationToken = default)
         {
-            var playlists = await _playlistRepository.GetAllByChannelIdAsync(request.ChannelId);
+            var playlists = await _playlistRepository.GetAllPlaylistsByChannelIdAsync(request.ChannelId);
             return _mapper.Map<IEnumerable<PlaylistDto>>(playlists);
         }
     }
