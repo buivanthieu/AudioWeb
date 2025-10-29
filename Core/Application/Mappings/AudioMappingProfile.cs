@@ -6,10 +6,10 @@ using AutoMapper;
 
 namespace AudioWeb.Core.Application.Mappings
 {
-    public class AudioChattingProfile : Profile
+    public class AudioMappingProfile : Profile
     {
 
-        public AudioChattingProfile()
+        public AudioMappingProfile()
         {
             // category
 

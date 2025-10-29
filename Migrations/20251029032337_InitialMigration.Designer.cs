@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AudioWeb.Migrations
 {
     [DbContext(typeof(AudioDbContext))]
-    [Migration("20251023155310_InitialMigration")]
+    [Migration("20251029032337_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -305,7 +305,7 @@ namespace AudioWeb.Migrations
             modelBuilder.Entity("AudioWeb.Core.Domain.Entities.Playlist", b =>
                 {
                     b.HasOne("AudioWeb.Core.Domain.Entities.Channel", "Channel")
-                        .WithMany()
+                        .WithMany("Playlists")
                         .HasForeignKey("ChannelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -385,6 +385,8 @@ namespace AudioWeb.Migrations
 
             modelBuilder.Entity("AudioWeb.Core.Domain.Entities.Channel", b =>
                 {
+                    b.Navigation("Playlists");
+
                     b.Navigation("UploadedTracks");
                 });
 

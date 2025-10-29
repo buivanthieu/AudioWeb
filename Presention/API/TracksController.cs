@@ -91,5 +91,20 @@ namespace AudioWeb.Presention.API
                 return this.BadRequestResponse<TrackDto>(ex.Message);
             }
         }
+
+        [HttpGet("get-tracks-channel")]
+        public async Task<ActionResult<BaseListResponse<TrackDto>>> GetTracksUploadByChannelId([FromQuery] int channelId)
+        {
+            try
+            {
+                var query = new GetAllTracksUploadByChannelIdQuery(channelId);
+                var result = await _mediator.Send(query);
+                return this.SuccessListResponse(result);
+            }
+            catch (Exception ex)
+            {
+                return this.BadRequestListResponse<TrackDto>(ex.Message);
+            }
+        }
     }
 }

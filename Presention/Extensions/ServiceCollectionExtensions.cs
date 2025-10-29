@@ -1,5 +1,8 @@
 ﻿
+using AudioWeb.Core.Application.Mappings;
+using AudioWeb.Core.Domain.Interfaces;
 using AudioWeb.Infrastructure.Data.DbContexts;
+using AudioWeb.Infrastructure.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,12 +25,18 @@ namespace Audio.Presentation.Extensions
             });
 
             // Add AutoMapper
-            //services.AddAutoMapper(typeof(AudioMapppingProfile));
+            services.AddAutoMapper(typeof(AudioMappingProfile));
 
-            // Add Repositories
-            //services.AddScoped<IMessageRepository, MessageRepository>();
-            //services.AddScoped<IConversationRepository, ConversationRepository>();
-            //services.AddScoped<IUserConversationRepository, UserConversationRepository>();
+            //Add Repositories
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IChannelRepository, ChannelRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IWriterRepository, WriterRepository>();
+            services.AddScoped<ITrackRepository, TrackRepository>();
+            services.AddScoped<IPlaylistRepository, PlaylistRepository>();
+            services.AddScoped<IOriginalStoryRepository, OriginalStoryRepository>();
+            services.AddScoped<ITagRepository, TagRepository>();
+
 
 
             //services.AddAuthentication(options =>

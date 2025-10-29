@@ -302,7 +302,7 @@ namespace AudioWeb.Migrations
             modelBuilder.Entity("AudioWeb.Core.Domain.Entities.Playlist", b =>
                 {
                     b.HasOne("AudioWeb.Core.Domain.Entities.Channel", "Channel")
-                        .WithMany()
+                        .WithMany("Playlists")
                         .HasForeignKey("ChannelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -382,6 +382,8 @@ namespace AudioWeb.Migrations
 
             modelBuilder.Entity("AudioWeb.Core.Domain.Entities.Channel", b =>
                 {
+                    b.Navigation("Playlists");
+
                     b.Navigation("UploadedTracks");
                 });
 

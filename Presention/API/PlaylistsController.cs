@@ -91,5 +91,20 @@ namespace AudioWeb.Presention.API
                 return this.BadRequestResponse<PlaylistDto>(ex.Message);
             }
         }
+
+        [HttpGet("get-playlists-channel")]
+        public async Task<ActionResult<BaseListResponse<PlaylistDto>>> GetPlaylistsByChannelId([FromQuery] int channelId)
+        {
+            try
+            {
+                var query = new GetAllPlaylistsByChannelIdQuery(channelId);
+                var result = await _mediator.Send(query);
+                return this.SuccessListResponse(result);
+            }
+            catch (Exception ex)
+            {
+                return this.BadRequestListResponse<PlaylistDto>(ex.Message);
+            }
+        }
     }
 }
