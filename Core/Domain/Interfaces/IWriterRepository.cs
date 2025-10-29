@@ -11,5 +11,6 @@ namespace AudioWeb.Core.Domain.Interfaces
         Task<Writer> UpdateAsync(Writer writer);
         Task<bool> DeleteAsync(int id);
 
+        Task<Writer?> GetByNameAsync(string name);
     }
 }

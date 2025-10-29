@@ -57,5 +57,12 @@ namespace AudioWeb.Infrastructure.Data.Repositories
             await _context.SaveChangesAsync();
             return writer;
         }
+
+        public async Task<Writer?> GetByNameAsync(string name)
+        {
+            var writer = await _context.Writers.FirstOrDefaultAsync(w => w.Name == name);
+            
+            return writer;
+        }
     }
 }

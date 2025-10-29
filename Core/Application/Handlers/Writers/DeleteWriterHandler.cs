@@ -21,7 +21,7 @@ namespace AudioWeb.Core.Application.Handlers.Writers
             _mapper = mapper;
         }
 
-        public async Task<bool> Handle(DeleteWriterCommand request, CancellationToken cancellationToken = default)
+        public async Task<bool> Handle(DeleteWriterCommand request, CancellationToken cancellationToken)
         {
 			var writer = await _writerRepository.GetByIdAsync(request.WriterId);
             if (writer == null)

@@ -17,7 +17,7 @@ namespace AudioWeb.Core.Application.Handlers.Channels
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<ChannelDto>> Handle(GetAllChannelsQuery request, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<ChannelDto>> Handle(GetAllChannelsQuery request, CancellationToken cancellationToken)
         {
 			var channels = await _channelRepository.GetAllAsync();
             return _mapper.Map<IEnumerable<ChannelDto>>(channels);

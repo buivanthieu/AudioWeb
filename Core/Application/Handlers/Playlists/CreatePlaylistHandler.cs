@@ -18,7 +18,7 @@ namespace AudioWeb.Core.Application.Handlers.Playlists
             _mapper = mapper;
         }
 
-        public async Task<PlaylistDto> Handle(CreatePlaylistCommand request, CancellationToken cancellationToken = default)
+        public async Task<PlaylistDto> Handle(CreatePlaylistCommand request, CancellationToken cancellationToken)
         {
             var playlistEntity = _mapper.Map<Playlist>(request.CreatePlaylistDto);
             var createdPlaylist = await _playlistRepository.AddAsync(playlistEntity);

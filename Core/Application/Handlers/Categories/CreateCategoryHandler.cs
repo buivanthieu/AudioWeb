@@ -19,7 +19,7 @@ namespace AudioWeb.Core.Application.Handlers.Categories
             _mapper = mapper;
         }
 
-        public async Task<CategoryDto> Handle(CreateCategoryCommand request, CancellationToken cancellationToken = default)
+        public async Task<CategoryDto> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
 			var category = _mapper.Map<Category>(request.createCategryDto);
             var createdCategory = await _categoryRepository.AddAsync(category);

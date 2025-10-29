@@ -16,7 +16,7 @@ namespace AudioWeb.Core.Application.Handlers.Writers
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<WriterDto>> Handle(GetAllWritersQuery request, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<WriterDto>> Handle(GetAllWritersQuery request, CancellationToken cancellationToken)
         {
 			var writers = await _writerRepository.GetAllAsync();
             return _mapper.Map<IEnumerable<WriterDto>>(writers);

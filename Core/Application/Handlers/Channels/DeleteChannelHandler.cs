@@ -20,7 +20,7 @@ namespace AudioWeb.Core.Application.Handlers.Channels
             _mapper = mapper;
         }
 
-        public async Task<bool> Handle(DeleteChannelCommand request, CancellationToken cancellationToken = default)
+        public async Task<bool> Handle(DeleteChannelCommand request, CancellationToken cancellationToken)
         {
 			var channel = await _channelRepository.GetByIdAsync(request.ChannelId);
             if (channel == null)

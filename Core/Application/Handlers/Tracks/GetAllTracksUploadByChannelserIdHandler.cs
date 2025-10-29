@@ -18,7 +18,7 @@ namespace AudioWeb.Core.Application.Handlers.Tracks
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<TrackDto>> Handle(GetAllTracksUploadByChannelIdQuery request, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<TrackDto>> Handle(GetAllTracksUploadByChannelIdQuery request, CancellationToken cancellationToken)
         {
 			var tracks = await _trackRepository.GetAllTracksByChannelIdAsync(request.ChannelId);
             return _mapper.Map<IEnumerable<TrackDto>>(tracks);

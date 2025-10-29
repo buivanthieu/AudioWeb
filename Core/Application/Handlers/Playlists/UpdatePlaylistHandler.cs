@@ -17,7 +17,7 @@ namespace AudioWeb.Core.Application.Handlers.Playlists
             _mapper = mapper;
         }
 
-        public async Task<PlaylistDto> Handle(UpdatePlaylistCommand request, CancellationToken cancellationToken = default)
+        public async Task<PlaylistDto> Handle(UpdatePlaylistCommand request, CancellationToken cancellationToken)
         {
             var playlist = await _playlistRepository.GetByIdAsync(request.PlaylistId);
             if (playlist == null)

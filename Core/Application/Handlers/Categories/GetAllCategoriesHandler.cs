@@ -19,7 +19,7 @@ namespace AudioWeb.Core.Application.Handlers.Categories
         }
 
 
-        public async Task<IEnumerable<CategoryDto>> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<CategoryDto>> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken)
         {
 			var categoryList = await _categoryRepository.GetAllAsync();
             return _mapper.Map<IEnumerable<CategoryDto>>(categoryList);

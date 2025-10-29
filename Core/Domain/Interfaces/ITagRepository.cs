@@ -10,6 +10,7 @@ namespace AudioWeb.Core.Domain.Interfaces
         Task<Tag> AddAsync(Tag tag);
         Task<Tag> UpdateAsync(Tag tag);
         Task<bool> DeleteAsync(int id);
+        Task<Tag?> GetByNameAsync(string name);
 
     }
 }

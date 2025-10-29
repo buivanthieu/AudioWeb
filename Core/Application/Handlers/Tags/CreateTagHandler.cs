@@ -18,7 +18,7 @@ namespace AudioWeb.Core.Application.Handlers.Tags
             _tagRepository = tagRepository;
         }
 
-        public async Task<TagDto> Handle(CreateTagCommand request, CancellationToken cancellationToken = default)
+        public async Task<TagDto> Handle(CreateTagCommand request, CancellationToken cancellationToken)
         {
             var tag = _mapper.Map<Tag>(request.CreateTagDto);
             var createdTag = await _tagRepository.AddAsync(tag);

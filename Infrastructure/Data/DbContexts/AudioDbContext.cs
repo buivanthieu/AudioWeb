@@ -38,8 +38,9 @@ namespace AudioWeb.Infrastructure.Data.DbContexts
                 .HasOne(os => os.Writer)
                 .WithMany(w => w.OriginalStories)
                 .HasForeignKey(os => os.WriterId)
-                .IsRequired();
-            
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.SetNull);
+
             modelBuilder.Entity<Track>()
                 .HasOne(t => t.OriginalStory)
                 .WithMany(os => os.Tracks)

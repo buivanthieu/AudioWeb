@@ -20,7 +20,7 @@ namespace AudioWeb.Core.Application.Handlers.Categories
             _mapper = mapper;
         }
 
-        public async Task<CategoryDto> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken = default)
+        public async Task<CategoryDto> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
         {
 			var category = await _categoryRepository.GetByIdAsync(request.categoryId);
             if (category == null)

@@ -4,6 +4,6 @@
     {
         public string StoryName { get; set; } = string.Empty;
 
-        public int WriterId { get; set; }
+        public int? WriterId { get; set; }
     }
 }

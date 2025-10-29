@@ -17,7 +17,7 @@ namespace AudioWeb.Core.Application.Handlers.Tags
             _tagRepository = tagRepository;
         }
 
-        public async Task<TagDto> Handle(GetTagByIdQuery request, CancellationToken cancellationToken = default)
+        public async Task<TagDto> Handle(GetTagByIdQuery request, CancellationToken cancellationToken)
         {
 			var tag = await _tagRepository.GetByIdAsync(request.TagId);
             if (tag == null)

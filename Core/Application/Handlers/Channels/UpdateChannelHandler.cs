@@ -17,7 +17,7 @@ namespace AudioWeb.Core.Application.Handlers.Channels
             _mapper = mapper;
         }
 
-        public async Task<ChannelDto> Handle(UpdateChannelCommand request, CancellationToken cancellationToken = default)
+        public async Task<ChannelDto> Handle(UpdateChannelCommand request, CancellationToken cancellationToken)
         {
 			var existingChannel = await _channelRepository.GetByIdAsync(request.ChannelId);
             if (existingChannel == null)

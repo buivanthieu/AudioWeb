@@ -17,7 +17,7 @@ namespace AudioWeb.Core.Application.Handlers.Tracks
             _mapper = mapper;
         }
 
-        public async Task<bool> Handle(DeleteTrackCommand request, CancellationToken cancellationToken = default)
+        public async Task<bool> Handle(DeleteTrackCommand request, CancellationToken cancellationToken)
         {
             var track = await _trackRepository.GetByIdAsync(request.TrackId);
             if (track == null)

@@ -16,7 +16,7 @@ namespace AudioWeb.Core.Application.Handlers.Tags
             _tagRepository = tagRepository;
         }
 
-        public async Task<bool> Handle(DeleteTagCommand request, CancellationToken cancellationToken = default)
+        public async Task<bool> Handle(DeleteTagCommand request, CancellationToken cancellationToken)
         {
 			var tag = await _tagRepository.GetByIdAsync(request.TagId);
             if (tag == null)

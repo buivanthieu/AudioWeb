@@ -19,7 +19,7 @@ namespace AudioWeb.Core.Application.Handlers.Channels
             _mapper = mapper;
         }
 
-        public async Task<ChannelDto> Handle(CreateChannelCommand request, CancellationToken cancellationToken = default)
+        public async Task<ChannelDto> Handle(CreateChannelCommand request, CancellationToken cancellationToken)
         {
             var channel = _mapper.Map<Channel>(request.CreateChannelDto);
             var createdChannel = await _channelRepository.AddAsync(channel);

@@ -1,6 +1,9 @@
 ﻿using AudioWeb.Core.Application.DTOs.Categories;
 using AudioWeb.Core.Application.DTOs.Channels;
 using AudioWeb.Core.Application.DTOs.OriginalStories;
+using AudioWeb.Core.Application.DTOs.Tags;
+using AudioWeb.Core.Application.DTOs.Tracks;
+using AudioWeb.Core.Application.DTOs.Writers;
 using AudioWeb.Core.Domain.Entities;
 using AutoMapper;
 
@@ -37,6 +40,19 @@ namespace AudioWeb.Core.Application.Mappings
 
             //Playlist
 
+            //Writer
+            CreateMap<Writer, WriterDto>()
+                .ReverseMap();
+            CreateMap<CreateWriterDto, Writer>();
+
+            //Track
+            CreateMap<Track, TrackDto>();
+            CreateMap<CreateTrackDto, Track>();
+
+            //Tag
+            CreateMap<Tag, TagDto>()
+                .ReverseMap();
+            CreateMap<CreateTagDto, Tag>();
 
         }
 

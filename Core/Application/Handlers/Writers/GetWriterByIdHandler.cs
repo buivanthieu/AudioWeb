@@ -22,7 +22,7 @@ namespace AudioWeb.Core.Application.Handlers.Writers
             _mapper = mapper;
         }
 
-        public async Task<WriterDto> Handle(GetWriterByIdQuery request, CancellationToken cancellationToken = default)
+        public async Task<WriterDto> Handle(GetWriterByIdQuery request, CancellationToken cancellationToken)
         {
 			var writer = await _writerRepository.GetByIdAsync(request.WriterId);
             return _mapper.Map<WriterDto>(writer);

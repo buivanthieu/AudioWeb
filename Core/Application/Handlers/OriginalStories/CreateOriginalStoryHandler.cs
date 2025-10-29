@@ -16,7 +16,7 @@ namespace AudioWeb.Core.Application.Handlers.OriginalStories
             _originalStoryRepository = originalStoryRepository;
             _mapper = mapper;
         }
-        public async Task<OriginalStoryDto> Handle(CreateOriginalStoryCommand request, CancellationToken cancellationToken = default)
+        public async Task<OriginalStoryDto> Handle(CreateOriginalStoryCommand request, CancellationToken cancellationToken)
         {
             var originalStory = _mapper.Map<OriginalStory>(request.CreateOriginalStoryDto);
             var createdOriginalStory = await _originalStoryRepository.AddAsync(originalStory);

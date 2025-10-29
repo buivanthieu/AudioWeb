@@ -11,5 +11,7 @@ namespace AudioWeb.Core.Domain.Interfaces
         Task<OriginalStory> UpdateAsync(OriginalStory originalStory);
         Task<bool> DeleteAsync(int id);
 
+        Task<OriginalStory?> GetByNameAsync(string storyName);
+
     }
 }

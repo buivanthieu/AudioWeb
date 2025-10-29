@@ -18,7 +18,7 @@ namespace AudioWeb.Core.Application.Handlers.Tracks
             _mapper = mapper;
         }
 
-        public async Task<TrackDto> Handle(UpdateTrackCommand request, CancellationToken cancellationToken = default)
+        public async Task<TrackDto> Handle(UpdateTrackCommand request, CancellationToken cancellationToken)
         {
 			var existingTrack = await _trackRepository.GetByIdAsync(request.TrackId);
             if (existingTrack == null)

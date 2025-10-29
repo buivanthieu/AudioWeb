@@ -57,5 +57,12 @@ namespace AudioWeb.Infrastructure.Data.Repositories
             await _context.SaveChangesAsync();
             return story;
         }
+
+        public async Task<OriginalStory?> GetByNameAsync(string storyName)
+        {
+            var story = await _context.OriginalStories.FirstOrDefaultAsync(s => s.StoryName == storyName);
+            
+            return story;
+        }
     }
 }
