@@ -18,15 +18,17 @@ namespace AudioWeb.Core.Application.Handlers.Tracks
         private readonly IOriginalStoryRepository _originalStoryRepository;
         private readonly ITagRepository _tagRepository;
         private readonly IWriterRepository _writerRepository;
+        private readonly ITrackTagRepository _trackTagRepository;
         public CreateTrackHandler(ITrackRepository trackRepository, IMapper mapper, 
             IOriginalStoryRepository originalStoryRepository, ITagRepository tagRepository, 
-            IWriterRepository writerRepository)
+            IWriterRepository writerRepository, ITrackTagRepository trackTagRepository)
         {
             _trackRepository = trackRepository;
             _mapper = mapper;
             _originalStoryRepository = originalStoryRepository;
             _tagRepository = tagRepository;
             _writerRepository = writerRepository;
+            _trackTagRepository = trackTagRepository;
         }
 
         public async Task<TrackDto> Handle(CreateTrackCommand request, CancellationToken cancellationToken)
@@ -95,6 +97,19 @@ namespace AudioWeb.Core.Application.Handlers.Tracks
 
             }
             var createdTrack = await _trackRepository.AddAsync(track);
+
+
+            foreach (var tag in tags)
+            {
+                var trackTag = new TrackTag
+                {
+                    TrackId = createdTrack.Id,
+                    TagId = tag.Id
+                };
+                await _trackTagRepository.AddAsync(trackTag);
+            }
+
+
             return _mapper.Map<TrackDto>(createdTrack);
 
         }

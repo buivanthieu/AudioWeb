@@ -48,6 +48,11 @@ namespace AudioWeb.Core.Application.Mappings
             //Track
             CreateMap<Track, TrackDto>();
             CreateMap<CreateTrackDto, Track>();
+            CreateMap<Track, TrackListDto>()
+                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name))
+                .ForMember(dest => dest.OriginalStoryName, opt => opt.MapFrom(src => src.OriginalStory.StoryName))
+                .ForMember(dest => dest.ChannelName, opt => opt.MapFrom(src => src.Channel.Name))
+                .ForMember(dest => dest.TagNames, opt => opt.MapFrom(src => src.TrackTags.Select(tt => tt.Tag.Name)));
 
             //Tag
             CreateMap<Tag, TagDto>()

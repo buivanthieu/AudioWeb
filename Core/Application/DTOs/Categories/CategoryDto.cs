@@ -3,11 +3,8 @@ using AudioWeb.Core.Domain.Entities;
 
 namespace AudioWeb.Core.Application.DTOs.Categories
 {
-    public class CategoryDto
+    public class CategoryDto : CategoryListDto
     {
-        public int Id { get; set; }
-        public string? Name { get; set; }
-
-        public IEnumerable<TrackDto> TrackDtos { get; set; } = new List<TrackDto>();
+        public IEnumerable<TrackListDto> TrackDtos { get; set; } = new List<TrackListDto>();
     }
 }

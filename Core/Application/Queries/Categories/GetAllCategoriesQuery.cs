@@ -4,7 +4,7 @@ using MediatR;
 
 namespace AudioWeb.Core.Application.Queries.Categories
 {
-    public record GetAllCategoriesQuery : IRequest<IEnumerable<CategoryDto>>
+    public record GetAllCategoriesQuery : IRequest<IEnumerable<CategoryListDto>>
     {
     }
 }

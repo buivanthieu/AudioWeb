@@ -7,15 +7,15 @@ using AudioWeb.Core.Domain.Enums;
 
 namespace AudioWeb.Core.Application.DTOs.Tracks
 {
-    public class TrackDto
+    public class TrackDto : TrackListDto
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
-        public string? Title { get; set; }
-        public string? Description { get; set; }
-        public string? AudioUrl { get; set; } 
-        public DateTime UploadedAt { get; set; }
-        public string? Status { get; set; }
+        //public string? Title { get; set; }
+        //public string? Description { get; set; }
+        //public string? AudioUrl { get; set; } 
+        //public DateTime UploadedAt { get; set; }
+        //public string? Status { get; set; }
         //public int ChannelId { get; set; }
         //public int CategoryId { get; set; }
         //public int OriginalStoryId { get; set; }

@@ -8,7 +8,7 @@ using AutoMapper;
 
 namespace AudioWeb.Core.Application.Handlers.Categories
 {
-    public class GetAllCategoriesHandler : IRequestHandler<GetAllCategoriesQuery, IEnumerable<CategoryDto>>
+    public class GetAllCategoriesHandler : IRequestHandler<GetAllCategoriesQuery, IEnumerable<CategoryListDto>>
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;
@@ -19,10 +19,10 @@ namespace AudioWeb.Core.Application.Handlers.Categories
         }
 
 
-        public async Task<IEnumerable<CategoryDto>> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<CategoryListDto>> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken)
         {
 			var categoryList = await _categoryRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<CategoryDto>>(categoryList);
+            return _mapper.Map<IEnumerable<CategoryListDto>>(categoryList);
         }
     }
 }

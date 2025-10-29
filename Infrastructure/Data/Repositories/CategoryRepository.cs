@@ -43,6 +43,13 @@ namespace AudioWeb.Infrastructure.Data.Repositories
         {
             var category = await _context.Categories
                 .Include(c => c.Tracks)
+                    .ThenInclude(t => t.OriginalStory)
+                        .ThenInclude(os => os.Writer)
+                .Include(c => c.Tracks)
+                    .ThenInclude(t => t.Channel)
+                .Include(c => c.Tracks)
+                    .ThenInclude(t => t.TrackTags)
+                        .ThenInclude(tt => tt.Tag)
                 .FirstOrDefaultAsync(c => c.Id == id);
             if (category == null)
             {

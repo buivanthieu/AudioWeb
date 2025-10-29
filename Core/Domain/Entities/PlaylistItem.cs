@@ -15,7 +15,7 @@ namespace AudioWeb.Core.Domain.Entities
 
         public DateTime AddedAt { get; set; } = DateTime.UtcNow;
 
-        public Playlist? Playlist { get; set; }
-        public Track? Track { get; set; }
+        public Playlist Playlist { get; set; } = null!;
+        public Track Track { get; set; } = null!;
     }
 }

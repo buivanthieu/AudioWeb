@@ -43,7 +43,17 @@ namespace AudioWeb.Infrastructure.Data.Repositories
 
         public async Task<Tag> GetByIdAsync(int id)
         {
-            var tag = await _context.Tags.FirstOrDefaultAsync(t => t.Id == id);
+            var tag = await _context.Tags
+                .Include(t => t.TrackTags)
+                    .ThenInclude(tt => tt.Track)
+                        .ThenInclude(t => t.OriginalStory)
+                            .ThenInclude(os => os.Writer)
+                .Include(t => t.TrackTags)
+                    .ThenInclude(tt => tt.Track.Channel)
+                .Include(t => t.TrackTags)
+                    .ThenInclude(tt => tt.Track.Category)
+                .FirstOrDefaultAsync(t => t.Id == id);
+
             if (tag == null)
             {
                 throw new KeyNotFoundException($"Tag with ID {id} not found.");

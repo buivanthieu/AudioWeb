@@ -21,7 +21,7 @@ namespace AudioWeb.Presention.API
         }
 
         [HttpGet("get-all")]
-        public async Task<ActionResult<BaseListResponse<CategoryDto>>> GetAllCategories()
+        public async Task<ActionResult<BaseListResponse<CategoryListDto>>> GetAllCategories()
         {
             try
             {
@@ -31,7 +31,7 @@ namespace AudioWeb.Presention.API
             }
             catch (Exception ex)
             {
-                return this.BadRequestListResponse<CategoryDto>(ex.Message);
+                return this.BadRequestListResponse<CategoryListDto>(ex.Message);
             }
         }
 
