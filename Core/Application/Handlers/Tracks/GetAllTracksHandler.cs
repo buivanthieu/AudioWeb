@@ -8,7 +8,7 @@ using AutoMapper;
 
 namespace AudioWeb.Core.Application.Handlers.Tracks
 {
-    public class GetAllTracksHandler : IRequestHandler<GetAllTracksQuery, IEnumerable<TrackDto>>
+    public class GetAllTracksHandler : IRequestHandler<GetAllTracksQuery, IEnumerable<TrackListDto>>
     {
         private readonly ITrackRepository _trackRepository;
         private readonly IMapper _mapper;
@@ -18,10 +18,10 @@ namespace AudioWeb.Core.Application.Handlers.Tracks
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<TrackDto>> Handle(GetAllTracksQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<TrackListDto>> Handle(GetAllTracksQuery request, CancellationToken cancellationToken)
         {
 			var tracks = await _trackRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<TrackDto>>(tracks);
+            return _mapper.Map<IEnumerable<TrackListDto>>(tracks);
         }
     }
 }

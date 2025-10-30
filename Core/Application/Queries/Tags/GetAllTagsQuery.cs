@@ -3,7 +3,7 @@ using MediatR;
 
 namespace AudioWeb.Core.Application.Queries.Tags
 {
-    public class GetAllTagsQuery() : IRequest<IEnumerable<TagDto>>
+    public class GetAllTagsQuery() : IRequest<IEnumerable<TagListDto>>
     {
     }
 }

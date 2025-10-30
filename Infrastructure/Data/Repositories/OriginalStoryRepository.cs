@@ -38,12 +38,23 @@ namespace AudioWeb.Infrastructure.Data.Repositories
 
         public async Task<IEnumerable<OriginalStory>> GetAllAsync()
         {
-            return await _context.OriginalStories.ToListAsync();
+            return await _context.OriginalStories
+                .Include(os => os.Writer)
+                .ToListAsync();
         }
 
         public async Task<OriginalStory> GetByIdAsync(int id)
         {
-            var story = await _context.OriginalStories.FirstOrDefaultAsync(s => s.Id == id);
+            var story = await _context.OriginalStories
+                .Include(os => os.Writer)
+                .Include(os => os.Tracks)
+                    .ThenInclude(t => t.Channel)
+                .Include(os => os.Tracks)
+                    .ThenInclude(t => t.Category)
+                .Include(os => os.Tracks)
+                    .ThenInclude(t => t.TrackTags)
+                        .ThenInclude(tt => tt.Tag)
+                .FirstOrDefaultAsync(s => s.Id == id);
             if (story == null)
             {
                 throw new KeyNotFoundException($"OriginalStory with ID {id} not found.");

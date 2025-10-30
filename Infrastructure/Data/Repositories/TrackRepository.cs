@@ -38,12 +38,21 @@ namespace AudioWeb.Infrastructure.Data.Repositories
 
         public async Task<IEnumerable<Track>> GetAllAsync()
         {
-            return await _context.Tracks.ToListAsync();
+            return await _context.Tracks
+                .Include(t => t.OriginalStory)
+                    .ThenInclude(os => os.Writer)
+                .Include(t => t.Channel)
+                .Include(t => t.Category)
+                .Include(t => t.TrackTags)
+                    .ThenInclude(tt => tt.Tag)
+                .ToListAsync();
         }
 
         public async Task<Track> GetByIdAsync(int id)
         {
-            var track = await _context.Tracks.FirstOrDefaultAsync(t => t.Id == id);
+            var track = await _context.Tracks
+                
+                .FirstOrDefaultAsync(t => t.Id == id);
             if (track == null)
             {
                 throw new KeyNotFoundException($"Track with ID {id} not found.");
@@ -62,8 +71,12 @@ namespace AudioWeb.Infrastructure.Data.Repositories
         public async Task<IEnumerable<Track>> GetAllTracksByChannelIdAsync(int channelId)
         {
             return await _context.Tracks
+                .Include(t => t.OriginalStory)
+                    .ThenInclude(os => os.Writer)
+                .Include(t => t.Channel.Name)
+                .Include(t => t.Category.Name)
                 .Include(t => t.TrackTags)
-                .Include(t => t.Category)
+                    .ThenInclude(tt => tt.Tag.Name)
                 .Where(t => t.ChannelId == channelId)
                 .ToListAsync();
         }

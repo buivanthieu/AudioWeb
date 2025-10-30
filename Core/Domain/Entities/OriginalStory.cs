@@ -7,7 +7,7 @@
 
 
         public int? WriterId { get; set; }
-        public Writer? Writer { get; set; } = null!;
+        public Writer? Writer { get; set; }
         public IEnumerable<Track> Tracks { get; set; } = new List<Track>();
     }
 }

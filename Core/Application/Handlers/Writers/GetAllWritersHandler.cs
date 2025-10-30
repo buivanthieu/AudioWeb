@@ -6,7 +6,7 @@ using AutoMapper;
 
 namespace AudioWeb.Core.Application.Handlers.Writers
 {
-    public class GetAllWritersHandler : IRequestHandler<GetAllWritersQuery, IEnumerable<WriterDto>>
+    public class GetAllWritersHandler : IRequestHandler<GetAllWritersQuery, IEnumerable<WriterListDto>>
     {
         private readonly IWriterRepository _writerRepository;
         private readonly IMapper _mapper;
@@ -16,10 +16,10 @@ namespace AudioWeb.Core.Application.Handlers.Writers
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<WriterDto>> Handle(GetAllWritersQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<WriterListDto>> Handle(GetAllWritersQuery request, CancellationToken cancellationToken)
         {
 			var writers = await _writerRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<WriterDto>>(writers);
+            return _mapper.Map<IEnumerable<WriterListDto>>(writers);
         }
     }
 }

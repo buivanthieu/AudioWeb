@@ -17,9 +17,11 @@ namespace AudioWeb.Core.Application.Mappings
             // category
 
             CreateMap<Category, CategoryDto>()
-                .ForMember(dest => dest.TrackDtos, opt => opt.MapFrom(src => src.Tracks));
+                .ForMember(dest => dest.TrackListDtos, opt => opt.MapFrom(src => src.Tracks));
             CreateMap<CategoryDto, Category>()
-                .ForMember(dest => dest.Tracks, opt => opt.MapFrom(src => src.TrackDtos));
+                .ForMember(dest => dest.Tracks, opt => opt.MapFrom(src => src.TrackListDtos));
+
+            CreateMap<Category, CategoryListDto>();
             CreateMap<CreateCategoryDto, Category>()
                 .ReverseMap();
 
@@ -33,7 +35,10 @@ namespace AudioWeb.Core.Application.Mappings
 
             //Original story
             CreateMap<OriginalStory, OriginalStoryDto>()
-                .ForMember(dest => dest.TrackDtos, opt => opt.MapFrom(src => src.Tracks));
+                 .ForMember(dest => dest.WriterName, opt => opt.MapFrom((src, dest) => src.Writer != null ? src.Writer.Name : null))
+                 .ForMember(dest => dest.TrackListDtos, opt => opt.MapFrom(src => src.Tracks));
+            CreateMap<OriginalStory, OriginalStoryListDto>()
+                 .ForMember(dest => dest.WriterName, opt => opt.MapFrom((src, dest) => src.Writer != null ? src.Writer.Name : null));
             CreateMap<CreateOriginalStoryDto, OriginalStory>()
                 .ReverseMap();
 
@@ -42,7 +47,8 @@ namespace AudioWeb.Core.Application.Mappings
 
             //Writer
             CreateMap<Writer, WriterDto>()
-                .ReverseMap();
+                .ForMember(dest => dest.OriginalStoryListDtos, opt => opt.MapFrom(src => src.OriginalStories));
+            CreateMap<Writer, WriterListDto>();
             CreateMap<CreateWriterDto, Writer>();
 
             //Track
@@ -56,7 +62,8 @@ namespace AudioWeb.Core.Application.Mappings
 
             //Tag
             CreateMap<Tag, TagDto>()
-                .ReverseMap();
+                .ForMember(dest => dest.TrackListDtos, opt => opt.MapFrom(src => src.TrackTags.Select(tt => tt.Track)));
+            CreateMap<Tag, TagListDto>();
             CreateMap<CreateTagDto, Tag>();
 
         }

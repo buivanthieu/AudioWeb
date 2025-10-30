@@ -5,6 +5,6 @@ namespace AudioWeb.Core.Application.DTOs.Categories
 {
     public class CategoryDto : CategoryListDto
     {
-        public IEnumerable<TrackListDto> TrackDtos { get; set; } = new List<TrackListDto>();
+        public IEnumerable<TrackListDto> TrackListDtos { get; set; } = new List<TrackListDto>();
     }
 }

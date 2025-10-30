@@ -3,7 +3,7 @@ using MediatR;
 
 namespace AudioWeb.Core.Application.Queries.Writers
 {
-    public record GetAllWritersQuery() : IRequest<IEnumerable<WriterDto>>
+    public record GetAllWritersQuery() : IRequest<IEnumerable<WriterListDto>>
     {
     }
 }

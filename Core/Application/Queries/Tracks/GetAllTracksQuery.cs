@@ -3,7 +3,7 @@ using MediatR;
 
 namespace AudioWeb.Core.Application.Queries.Tracks
 {
-    public record GetAllTracksQuery() : IRequest<IEnumerable<TrackDto>>
+    public record GetAllTracksQuery() : IRequest<IEnumerable<TrackListDto>>
     {
     }
 }

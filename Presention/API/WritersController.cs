@@ -20,7 +20,7 @@ namespace AudioWeb.Presention.API
         }
 
         [HttpGet("get-all")]
-        public async Task<ActionResult<BaseListResponse<WriterDto>>> GetAllWriters()
+        public async Task<ActionResult<BaseListResponse<WriterListDto>>> GetAllWriters()
         {
             try
             {
@@ -30,7 +30,7 @@ namespace AudioWeb.Presention.API
             }
             catch (Exception ex)
             {
-                return this.BadRequestListResponse<WriterDto>(ex.Message);
+                return this.BadRequestListResponse<WriterListDto>(ex.Message);
             }
         }
 

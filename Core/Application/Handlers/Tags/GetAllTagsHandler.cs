@@ -8,7 +8,7 @@ using AutoMapper;
 
 namespace AudioWeb.Core.Application.Handlers.Tags
 {
-    public class GetAllTagsHandler : IRequestHandler<GetAllTagsQuery, IEnumerable<TagDto>>
+    public class GetAllTagsHandler : IRequestHandler<GetAllTagsQuery, IEnumerable<TagListDto>>
     {
         private readonly ITagRepository _tagRepository;
         private readonly IMapper _mapper;
@@ -18,10 +18,10 @@ namespace AudioWeb.Core.Application.Handlers.Tags
             _tagRepository = tagRepository;
         }
 
-        public async Task<IEnumerable<TagDto>> Handle(GetAllTagsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<TagListDto>> Handle(GetAllTagsQuery request, CancellationToken cancellationToken)
         {
 			var tags = await _tagRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<TagDto>>(tags);
+            return _mapper.Map<IEnumerable<TagListDto>>(tags);
         }
     }
 }

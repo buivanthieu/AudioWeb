@@ -43,7 +43,9 @@ namespace AudioWeb.Infrastructure.Data.Repositories
 
         public async Task<Writer> GetByIdAsync(int id)
         {
-            var writer = await _context.Writers.FirstOrDefaultAsync(w => w.Id == id);
+            var writer = await _context.Writers
+                .Include(w => w.OriginalStories)
+                .FirstOrDefaultAsync(w => w.Id == id);
             if (writer == null)
             {
                 throw new KeyNotFoundException($"Writer with ID {id} not found.");
