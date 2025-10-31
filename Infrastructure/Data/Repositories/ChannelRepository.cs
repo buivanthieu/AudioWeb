@@ -44,7 +44,30 @@ namespace AudioWeb.Infrastructure.Data.Repositories
 
         public async Task<Channel> GetByIdAsync(int id)
         {
-            var channel = await _context.Channels.FirstOrDefaultAsync(c => c.Id == id);
+            var channel = await _context.Channels
+                    .Include(c => c.UploadedTracks)
+                        .ThenInclude(t => t.Category)
+                    .Include(c => c.UploadedTracks)
+                        .ThenInclude(t => t.OriginalStory)
+                            .ThenInclude(os => os.Writer)
+                    .Include(c => c.UploadedTracks)
+                        .ThenInclude(t => t.TrackTags)
+                            .ThenInclude(tt => tt.Tag)
+                    .Include(c => c.Playlists)
+                        .ThenInclude(p => p.PlaylistItems)
+                            .ThenInclude(pi => pi.Track)
+                                .ThenInclude(t => t.Category)
+                    .Include(c => c.Playlists)
+                        .ThenInclude(p => p.PlaylistItems)
+                            .ThenInclude(pi => pi.Track)
+                                .ThenInclude(t => t.OriginalStory)
+                                    .ThenInclude(os => os.Writer)
+                    .Include(c => c.Playlists)
+                        .ThenInclude(p => p.PlaylistItems)
+                            .ThenInclude(pi => pi.Track)
+                                .ThenInclude(t => t.TrackTags)
+                                    .ThenInclude(tt => tt.Tag)
+                    .FirstOrDefaultAsync(c => c.Id == id);
             if (channel == null)
             {
                 throw new KeyNotFoundException($"Channel with ID {id} not found.");

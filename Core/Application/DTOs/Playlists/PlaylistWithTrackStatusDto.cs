@@ -1,10 +1,11 @@
 ﻿namespace AudioWeb.Core.Application.DTOs.Playlists
 {
-    public class CreatePlaylistDto
+    public class PlaylistWithTrackStatusDto
     {
-        public int ChannelId { get; set; }
+
+        public int PlaylistId { get; set; }
         public string? Title { get; set; }
         public string? Description { get; set; }
-    
+        public bool ContainsTrack { get; set; }
     }
 }

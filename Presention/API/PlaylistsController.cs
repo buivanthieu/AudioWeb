@@ -35,7 +35,7 @@ namespace AudioWeb.Presention.API
         }
 
         [HttpGet("id")]
-        public async Task<ActionResult<BaseResponse<PlaylistDto>>> GetPlaylistById(int id)
+        public async Task<ActionResult<BaseResponse<PlaylistDto>>> GetPlaylistById([FromBody] int id)
         {
             try
             {
@@ -104,6 +104,49 @@ namespace AudioWeb.Presention.API
             catch (Exception ex)
             {
                 return this.BadRequestListResponse<PlaylistDto>(ex.Message);
+            }
+        }
+
+        [HttpGet("get-track-status-in-playlist")]
+        public async Task<ActionResult<BaseListResponse<PlaylistWithTrackStatusDto>>> GetPlaylistsWithTrack([FromQuery] int channelId)
+        {
+            try
+            {
+                var query = new GetPlaylistsWithTrackQuery(channelId);
+                var result = await _mediator.Send(query);
+                return this.SuccessListResponse(result);
+            }
+            catch (Exception ex)
+            {
+                return this.BadRequestListResponse<PlaylistWithTrackStatusDto>(ex.Message);
+            }
+        }
+
+        [HttpPost("add-track-to-playlist")]
+        public async Task<ActionResult<BaseResponse<bool>>> AddTrackToPlaylist([FromBody] AddTrackToPlaylistCommand command)
+        {
+            try
+            {
+                var result = await _mediator.Send(command);
+                return this.SuccessResponse(result, "Track added to playlist successfully.");
+            }
+            catch (Exception ex)
+            {
+                return this.BadRequestResponse<bool>(ex.Message);
+            }
+        }
+
+        [HttpDelete("remove-track-from-playlist")]
+        public async Task<ActionResult<BaseResponse<bool>>> RemoveTrackFromPlaylist([FromQuery] RemoveTrackFromPlaylistCommand command)
+        {
+            try
+            {
+                var result = await _mediator.Send(command);
+                return this.SuccessResponse(result, "Track removed from playlist successfully.");
+            }
+            catch (Exception ex)
+            {
+                return this.BadRequestResponse<bool>(ex.Message);
             }
         }
     }

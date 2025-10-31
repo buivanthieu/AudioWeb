@@ -7,7 +7,7 @@ using AutoMapper;
 
 namespace AudioWeb.Core.Application.Handlers.Channels
 {
-    public class GetAllChannelsHandler : IRequestHandler<GetAllChannelsQuery, IEnumerable<ChannelDto>>
+    public class GetAllChannelsHandler : IRequestHandler<GetAllChannelsQuery, IEnumerable<ChannelListDto>>
     {
         private readonly IChannelRepository _channelRepository;
         private readonly IMapper _mapper;
@@ -17,10 +17,10 @@ namespace AudioWeb.Core.Application.Handlers.Channels
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<ChannelDto>> Handle(GetAllChannelsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<ChannelListDto>> Handle(GetAllChannelsQuery request, CancellationToken cancellationToken)
         {
 			var channels = await _channelRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<ChannelDto>>(channels);
+            return _mapper.Map<IEnumerable<ChannelListDto>>(channels);
         }
     }
 }

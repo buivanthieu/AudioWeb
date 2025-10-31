@@ -20,7 +20,7 @@ namespace AudioWeb.Presention.API
         }
 
         [HttpGet("get-all")]
-        public async Task<ActionResult<BaseListResponse<ChannelDto>>> GetAllChannels()
+        public async Task<ActionResult<BaseListResponse<ChannelListDto>>> GetAllChannels()
         {
             try
             {
@@ -30,7 +30,7 @@ namespace AudioWeb.Presention.API
             }
             catch (Exception ex)
             {
-                return this.BadRequestListResponse<ChannelDto>(ex.Message);
+                return this.BadRequestListResponse<ChannelListDto>(ex.Message);
             }
         }
 

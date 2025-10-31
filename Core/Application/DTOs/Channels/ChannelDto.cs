@@ -4,14 +4,10 @@ using AudioWeb.Core.Domain.Entities;
 
 namespace AudioWeb.Core.Application.DTOs.Channels
 {
-    public class ChannelDto
+    public class ChannelDto : ChannelListDto
     {
-        public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-
-        public int UserId { get; set; }
-        //public User User { get; set; } = null!;
-        public IEnumerable<TrackDto> UploadedTrackDtos { get; set; } = new List<TrackDto>();
+        
+        public IEnumerable<TrackListDto> UploadedTrackListDtos { get; set; } = new List<TrackListDto>();
         public IEnumerable<PlaylistDto> PlaylistDtos { get; set; } = new List<PlaylistDto>();
     }
 }

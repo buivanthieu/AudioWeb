@@ -8,7 +8,6 @@ namespace AudioWeb.Core.Domain.Entities
         public int ChannelId { get; set; }
         public string Title { get; set; } = string.Empty;
         public string? Description { get; set; }
-        public string Type { get; set; } = PlaylistType.Series.ToString();
         public int ItemCount { get; set; } = 0; 
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

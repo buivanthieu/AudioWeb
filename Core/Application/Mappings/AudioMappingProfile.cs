@@ -1,6 +1,7 @@
 ﻿using AudioWeb.Core.Application.DTOs.Categories;
 using AudioWeb.Core.Application.DTOs.Channels;
 using AudioWeb.Core.Application.DTOs.OriginalStories;
+using AudioWeb.Core.Application.DTOs.Playlists;
 using AudioWeb.Core.Application.DTOs.Tags;
 using AudioWeb.Core.Application.DTOs.Tracks;
 using AudioWeb.Core.Application.DTOs.Writers;
@@ -27,11 +28,10 @@ namespace AudioWeb.Core.Application.Mappings
 
             // channel
             CreateMap<Channel, ChannelDto>()
-                .ForMember(dest => dest.UploadedTrackDtos, opt => opt.MapFrom(src => src.UploadedTracks));
-            CreateMap<ChannelDto, Channel>()
-                .ForMember(dest => dest.UploadedTracks, opt => opt.MapFrom(src => src.UploadedTrackDtos));
-            CreateMap<CreateChannelDto, Channel>()
-                .ReverseMap();
+                .ForMember(dest => dest.UploadedTrackListDtos, opt => opt.MapFrom(src => src.UploadedTracks))
+                .ForMember(dest => dest.PlaylistDtos, opt => opt.MapFrom(src => src.Playlists));
+            CreateMap<CreateChannelDto, Channel>();
+            CreateMap<Channel, ChannelListDto>();
 
             //Original story
             CreateMap<OriginalStory, OriginalStoryDto>()
@@ -44,6 +44,10 @@ namespace AudioWeb.Core.Application.Mappings
 
 
             //Playlist
+            CreateMap<Playlist, PlaylistDto>()
+                .ForMember(dest => dest.ItemCount, opt => opt.MapFrom(src => src.PlaylistItems.Count()))
+                .ForMember(dest => dest.TrackListDtos, opt => opt.MapFrom(src => src.PlaylistItems.Select(pe => pe.Track)));
+            CreateMap<CreatePlaylistDto, Playlist>();
 
             //Writer
             CreateMap<Writer, WriterDto>()
