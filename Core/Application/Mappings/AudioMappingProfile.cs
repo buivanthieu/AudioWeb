@@ -1,4 +1,5 @@
-﻿using AudioWeb.Core.Application.DTOs.Categories;
+﻿using AudioWeb.Core.Application.DTOs.Auths;
+using AudioWeb.Core.Application.DTOs.Categories;
 using AudioWeb.Core.Application.DTOs.Channels;
 using AudioWeb.Core.Application.DTOs.OriginalStories;
 using AudioWeb.Core.Application.DTOs.Playlists;
@@ -15,6 +16,10 @@ namespace AudioWeb.Core.Application.Mappings
 
         public AudioMappingProfile()
         {
+
+            //auth
+
+            CreateMap<User, RegisterDto>();
             // category
 
             CreateMap<Category, CategoryDto>()
