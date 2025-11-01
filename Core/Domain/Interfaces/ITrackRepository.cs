@@ -14,6 +14,16 @@ namespace AudioWeb.Core.Domain.Interfaces
 
         Task<IEnumerable<Track>> GetAllTracksByChannelIdAsync(int channelId);
 
+        Task<IEnumerable<Track>> SearchTracksAsync(string searchTerm);
+
+        Task<IEnumerable<Track>> SearchTracksDetailAsync
+            (
+                string? searchTerm, 
+                int? categoryId, 
+                IEnumerable<int>? tagIds, 
+                string? sortBy, 
+                string? sortOrder
+            );
 
     }
 }

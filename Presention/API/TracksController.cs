@@ -106,5 +106,41 @@ namespace AudioWeb.Presention.API
                 return this.BadRequestListResponse<TrackDto>(ex.Message);
             }
         }
+
+        [HttpGet("search")]
+        public async Task<ActionResult<BaseListResponse<TrackListDto>>> SearchTracks([FromQuery] string searchTerm)
+        {
+            try
+            {
+                var query = new SearchTracksQuery(searchTerm);
+                var result = await _mediator.Send(query);
+                return this.SuccessListResponse(result);
+            }
+            catch (Exception ex)
+            {
+                return this.BadRequestListResponse<TrackListDto>(ex.Message);
+            }
+        }
+
+
+        [HttpGet("search-detail")]
+        public async Task<ActionResult<BaseListResponse<TrackListDto>>> SearchTracksDetail(
+            [FromQuery] string? searchTerm,
+            [FromQuery] int? categoryId,
+            [FromQuery] List<int>? tagIds,
+            [FromQuery] string? sortBy,
+            [FromQuery] string? sortOrder)
+        {
+            try
+            {
+                var query = new SearchTracksDetailQuery(searchTerm, categoryId, tagIds, sortBy, sortOrder);
+                var result = await _mediator.Send(query);
+                return this.SuccessListResponse(result);
+            }
+            catch (Exception ex)
+            {
+                return this.BadRequestListResponse<TrackListDto>(ex.Message);
+            }
+        }
     }
 }
