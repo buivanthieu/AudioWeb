@@ -21,9 +21,9 @@ namespace AudioWeb.Core.Application.DTOs.Tracks
         //public int OriginalStoryId { get; set; }
         //public IEnumerable<TrackTag> TrackTags { get; set; } = new List<TrackTag>();
         //public IEnumerable<PlaylistItem> PlaylistItems { get; set; } = new List<PlaylistItem>();
-        public CategoryDto CategoryDto { get; set; } = new CategoryDto();
-        public ChannelDto ChannelDto { get; set; } = new ChannelDto();
-        public OriginalStoryDto OriginalStoryDto { get; set; } = new OriginalStoryDto();
-        public IEnumerable<TagDto> TagDtos { get; set; } = new List<TagDto>();
+        public CategoryListDto CategoryListDto { get; set; } = new CategoryListDto();
+        public ChannelListDto ChannelListDto { get; set; } = new ChannelListDto();
+        public OriginalStoryListDto OriginalStoryListDto { get; set; } = new OriginalStoryListDto();
+        public IEnumerable<TagListDto> TagListDtos { get; set; } = new List<TagListDto>();
     }
 }

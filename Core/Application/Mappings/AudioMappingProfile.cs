@@ -61,7 +61,16 @@ namespace AudioWeb.Core.Application.Mappings
             CreateMap<CreateWriterDto, Writer>();
 
             //Track
-            CreateMap<Track, TrackDto>();
+            CreateMap<Track, TrackDto>()
+                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name))
+                .ForMember(dest => dest.OriginalStoryName, opt => opt.MapFrom(src => src.OriginalStory.StoryName))
+                .ForMember(dest => dest.ChannelName, opt => opt.MapFrom(src => src.Channel.Name))
+                .ForMember(dest => dest.TagNames, opt => opt.MapFrom(src => src.TrackTags.Select(tt => tt.Tag.Name)))
+                .ForMember(dest => dest.CategoryListDto, opt => opt.MapFrom(src => src.Category))
+                .ForMember(dest => dest.ChannelListDto, opt => opt.MapFrom(src => src.Channel))
+                .ForMember(dest => dest.OriginalStoryListDto, opt => opt.MapFrom(src => src.OriginalStory))
+                .ForMember(dest => dest.TagListDtos, opt => opt.MapFrom(src => src.TrackTags.Select(t => t.Tag)));
+                
             CreateMap<CreateTrackDto, Track>();
             CreateMap<Track, TrackListDto>()
                 .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name))

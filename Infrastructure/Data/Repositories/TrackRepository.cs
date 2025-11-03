@@ -51,7 +51,12 @@ namespace AudioWeb.Infrastructure.Data.Repositories
         public async Task<Track> GetByIdAsync(int id)
         {
             var track = await _context.Tracks
-                
+                .Include(t => t.OriginalStory)
+                    .ThenInclude(os => os.Writer)
+                .Include(t => t.Channel)
+                .Include(t => t.Category)
+                .Include(t => t.TrackTags)
+                    .ThenInclude(tt => tt.Tag)
                 .FirstOrDefaultAsync(t => t.Id == id);
             if (track == null)
             {

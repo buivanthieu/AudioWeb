@@ -38,7 +38,7 @@ namespace Audio.Presentation.Extensions
             services.AddScoped<IOriginalStoryRepository, OriginalStoryRepository>();
             services.AddScoped<ITagRepository, TagRepository>();
             services.AddScoped<ITrackTagRepository, TrackTagRepository>();
-
+            services.AddScoped<IPlaylistItemRepository, PlaylistItemRepository>();
             services.AddScoped<IAuthRepository, AuthRepository>();
 
             services.AddAuthentication(options =>
