@@ -11,6 +11,14 @@ namespace AudioWeb.Core.Domain.Entities
         public string AudioUrl { get; set; } = string.Empty;
         public DateTime UploadedAt { get; set; } = DateTime.UtcNow;
         public string Status { get; set; } = TrackStatus.Public.ToString();
+
+
+        public string? CoverArtUrl { get; set; }
+        public int DurationInSeconds { get; set; } = 0;
+        //public long ViewCount { get; set; } = 0;
+        //public int LikeCount { get; set; } = 0;
+
+
         public Channel Channel { get; set; } = null!;
 
         public int CategoryId { get; set; }

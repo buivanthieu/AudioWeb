@@ -11,7 +11,7 @@ namespace AudioWeb.Core.Domain.Entities
         public int ItemCount { get; set; } = 0; 
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
+        public string? CoverImageUrl { get; set; }
         public Channel Channel { get; set; } = null!;
         public IEnumerable<PlaylistItem> PlaylistItems { get; set; } = new List<PlaylistItem>();
     }
