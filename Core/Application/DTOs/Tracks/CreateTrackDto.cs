@@ -12,6 +12,7 @@ namespace AudioWeb.Core.Application.DTOs.Tracks
         public int ChannelId { get; set; }
         public int CategoryId { get; set; }
 
+        public string? CoverArtUrl { get; set; }
 
         public string? WriterName { get; set; }
         public string? OriginalStoryName { get; set; }

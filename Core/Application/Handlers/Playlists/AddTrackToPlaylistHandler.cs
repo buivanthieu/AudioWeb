@@ -23,11 +23,13 @@ namespace AudioWeb.Core.Application.Handlers.Playlists
             {
                 return false;
             }
+            var maxOrderIndex = await _playlistItemRepository.GetMaxOrderIndexAsync(request.PlaylistId);
             var playlistItem = new PlaylistItem
             {
                 PlaylistId = request.PlaylistId,
                 TrackId = request.TrackId,
-                AddedAt = DateTime.UtcNow
+                AddedAt = DateTime.UtcNow,
+                OrderIndex = maxOrderIndex + 1
             };
             await _playlistItemRepository.AddAsync(playlistItem);
             return true;

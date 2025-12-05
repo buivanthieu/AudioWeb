@@ -71,5 +71,13 @@ namespace AudioWeb.Infrastructure.Data.Repositories
             await _context.SaveChangesAsync();
             return item;
         }
+        public async Task<int> GetMaxOrderIndexAsync(int playlistId)
+        {
+            var maxOrderIndex = await _context.PlaylistItems
+                .Where(p => p.PlaylistId == playlistId)
+                .MaxAsync(p => (int?)p.OrderIndex)
+                ?? 0;
+            return maxOrderIndex;
+        }
     }
 }

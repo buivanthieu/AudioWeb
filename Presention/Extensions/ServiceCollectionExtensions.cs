@@ -3,6 +3,7 @@ using AudioWeb.Core.Application.Mappings;
 using AudioWeb.Core.Domain.Interfaces;
 using AudioWeb.Infrastructure.Data.DbContexts;
 using AudioWeb.Infrastructure.Data.Repositories;
+using AudioWeb.Infrastructure.Data.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -40,6 +41,9 @@ namespace Audio.Presentation.Extensions
             services.AddScoped<ITrackTagRepository, TrackTagRepository>();
             services.AddScoped<IPlaylistItemRepository, PlaylistItemRepository>();
             services.AddScoped<IAuthRepository, AuthRepository>();
+
+
+            services.AddSingleton<IFileService, LocalFileService>();
 
             services.AddAuthentication(options =>
             {

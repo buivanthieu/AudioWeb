@@ -11,5 +11,7 @@ namespace AudioWeb.Core.Domain.Interfaces
         Task<PlaylistItem> AddAsync(PlaylistItem item);
         Task<PlaylistItem> UpdateAsync(PlaylistItem item);
         Task<bool> DeleteAsync(int id);
+
+        Task<int> GetMaxOrderIndexAsync(int playlistId);
     }
 }
